@@ -1,12 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
+import data from './assets/data.json';
+import Card from './components/Card';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <ScrollView>
       <StatusBar style="auto" />
-    </View>
+      {data.map((item,index) =>
+            <Card
+            author = {item.author}
+            picture = {item.picture}
+            about = {item.about}
+            tags = {item.tags}
+            comments = {item.comments}
+            key = {index} />
+        )}
+    </ScrollView>
   );
 }
 
